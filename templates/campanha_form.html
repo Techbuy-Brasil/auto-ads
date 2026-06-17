@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Nova Campanha{% endblock %}
+{% block content %}
+<h4 class="mb-4"><i class="bi bi-plus-circle"></i> Nova Campanha — {{ cliente.nome }}</h4>
+
+<form method="POST">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Nome da Campanha</label>
+      <input type="text" name="nome" class="form-control bg-dark text-light" required placeholder="Ex: Campanha Vendas - Maio">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Objetivo</label>
+      <select name="objetivo" class="form-select bg-dark text-light" required>
+        <option value="VENDAS">Vendas (Sales)</option>
+        <option value="LEADS">Leads (Geração)</option>
+        <option value="TRAFEGO">Tráfego (Tráfego)</option>
+        <option value="RECONHECIMENTO">Reconhecimento (Awareness)</option>
+        <option value="ENGAGEMENT">Engajamento</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Orçamento Diário (R$)</label>
+      <input type="number" name="daily_budget" class="form-control bg-dark text-light" step="0.01" min="5" required placeholder="50,00">
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Status Inicial</label>
+      <select name="status" class="form-select bg-dark text-light">
+        <option value="PAUSED">Pausado (recomendado)</option>
+        <option value="ACTIVE">Ativo imediatamente</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-warning text-dark fw-bold"><i class="bi bi-rocket-takeoff"></i> Criar Campanha</button>
+      <a href="/campanhas/{{ client_id }}" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Configurações{% endblock %}
+{% block content %}
+<h4 class="mb-4"><i class="bi bi-gear"></i> Configurações</h4>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card bg-black border-secondary">
+      <div class="card-body">
+        <h5 class="text-warning">Alterar Senha</h5>
+        <form method="POST">
+          <div class="mb-3">
+            <label class="form-label">Nova Senha</label>
+            <input type="text" name="nova_senha" class="form-control bg-dark text-light" required>
+          </div>
+          <button class="btn btn-warning text-dark fw-bold">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card bg-black border-secondary">
+      <div class="card-body">
+        <h5 class="text-warning">Sobre</h5>
+        <p class="small text-muted mb-1"><strong>AutoAds</strong> — Automação de Tráfego Pago</p>
+        <p class="small text-muted mb-1">Usa a <strong>Meta Marketing API</strong> (facebook-business SDK)</p>
+        <p class="small text-muted mb-0">Porta: {{ request.host }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

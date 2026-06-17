@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4><i class="bi bi-people-fill"></i> Clientes (Contas de Anúncio)</h4>
+  <a href="/clientes/novo" class="btn btn-warning text-dark fw-bold"><i class="bi bi-plus-lg"></i> Novo Cliente</a>
+</div>
+
+<div class="row mb-4">
+  {% if clientes %}
+    {% for cid, info in clientes.items() %}
+      <div class="col-md-4 mb-3">
+        <div class="card bg-black border-secondary h-100">
+          <div class="card-body">
+            <h5 class="card-title text-warning">{{ info.nome }}</h5>
+            <p class="card-text small text-muted mb-2">ID: {{ cid }}</p>
+            <p class="card-text small text-muted mb-2">Conta: {{ info.ad_account_id }}</p>
+            <span class="badge bg-warning text-dark">Ads</span>
+          </div>
+          <div class="card-footer bg-transparent d-flex gap-2">
+            <a href="/campanhas/{{ cid }}" class="btn btn-warning btn-sm flex-fill text-dark fw-bold">
+              <i class="bi bi-megaphone"></i> Campanhas
+            </a>
+            <a href="/clientes/editar/{{ cid }}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-pencil"></i></a>
+            <a href="/clientes/remover/{{ cid }}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Remover {{ info.nome }}?')"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="col-12">
+      <div class="alert alert-secondary text-center">
+        Nenhum cliente cadastrado. <a href="/clientes/novo" class="alert-link">Adicionar primeiro cliente</a>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<div class="card bg-black border-secondary">
+  <div class="card-body">
+    <h5 class="text-warning"><i class="bi bi-info-circle"></i> Como usar</h5>
+    <ol class="small text-muted mb-0">
+      <li>Cadastre o cliente com o <strong>ID da conta de anúncio</strong> (ex: <code>act_123456789</code>) e o <strong>Access Token</strong> com permissão <code>ads_management</code></li>
+      <li>Acesse <strong>Campanhas</strong> para ver, criar, pausar ou ativar campanhas</li>
+      <li>Ao criar uma campanha, escolha o objetivo (Vendas, Leads, Tráfego, etc.) e defina o orçamento diário</li>
+      <li>A campanha e o conjunto de anúncios são criados pausados — revise antes de ativar</li>
+    </ol>
+  </div>
+</div>
+{% endblock %}

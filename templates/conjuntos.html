@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Conjuntos{% endblock %}
+{% block content %}
+<h4 class="mb-3"><i class="bi bi-layers"></i> Conjuntos de Anúncios</h4>
+<p class="text-light-emphasis small">{{ cliente.nome }} | Campaign ID: {{ campaign_id }}</p>
+
+{% if conjuntos %}
+<div class="table-responsive">
+  <table class="table table-dark table-hover">
+    <thead><tr><th>Nome</th><th>Status</th><th>Orçamento</th><th>Ações</th></tr></thead>
+    <tbody>
+      {% for a in conjuntos %}
+      <tr>
+        <td>{{ a['name'] }}</td>
+        <td><span class="badge bg-{{ 'success' if a['status'] == 'ACTIVE' else 'secondary' }}">{{ a['status'] }}</span></td>
+        <td>R$ {{ '%0.2f'|format(a['daily_budget']|int / 100) if a.get('daily_budget') else '---' }}</td>
+        <td><a href="/anuncios/{{ client_id }}/{{ a['id'] }}" class="btn btn-outline-info btn-sm">Anúncios</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="alert alert-secondary">Nenhum conjunto de anúncios.</div>
+{% endif %}
+<a href="/campanhas/{{ client_id }}" class="btn btn-outline-secondary mt-2">Voltar</a>
+{% endblock %}

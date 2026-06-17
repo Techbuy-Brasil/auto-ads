@@ -2,10 +2,11 @@
 {% block title %}Campanhas{% endblock %}
 {% block content %}
 
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
   <h4><i class="bi bi-megaphone"></i> Campanhas — {{ cliente.nome }}</h4>
   <div>
-    <a href="/campanhas/nova/{{ client_id }}" class="btn btn-warning text-dark fw-bold"><i class="bi bi-plus-lg"></i> Nova Campanha</a>
+    <a href="/wizard/{{ client_id }}/passo1" class="btn btn-warning text-dark fw-bold"><i class="bi bi-magic"></i> Criar Completo</a>
+    <a href="/campanhas/nova/{{ client_id }}" class="btn btn-outline-warning btn-sm">+ Campanha</a>
     <a href="/" class="btn btn-outline-secondary btn-sm">Voltar</a>
   </div>
 </div>
@@ -13,15 +14,9 @@
 {% if campanhas %}
 <div class="table-responsive">
   <table class="table table-dark table-hover">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Objetivo</th>
-        <th>Status</th>
-        <th>Orçamento Diário</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
+    <thead><tr>
+      <th>Nome</th><th>Objetivo</th><th>Status</th><th>Orçamento</th><th>Ações</th>
+    </tr></thead>
     <tbody>
       {% for c in campanhas %}
       <tr>
@@ -34,15 +29,10 @@
             <span class="badge bg-secondary">Pausado</span>
           {% endif %}
         </td>
-        <td>
-          {% if c.get('daily_budget') %}
-            R$ {{ '%0.2f'|format(c['daily_budget']|int / 100) }}
-          {% else %}
-            ---
-          {% endif %}
-        </td>
+        <td>{% if c.get('daily_budget') %}R$ {{ '%0.2f'|format(c['daily_budget']|int / 100) }}{% else %}---{% endif %}</td>
         <td>
           <div class="btn-group btn-group-sm">
+            <a href="/conjuntos/{{ client_id }}/{{ c['id'] }}" class="btn btn-outline-info">Conjuntos</a>
             {% if c['status'] == 'ACTIVE' %}
               <a href="/campanhas/pausar/{{ client_id }}/{{ c['id'] }}" class="btn btn-outline-warning">Pausar</a>
             {% else %}
@@ -56,6 +46,9 @@
   </table>
 </div>
 {% else %}
-<div class="alert alert-secondary">Nenhuma campanha encontrada nesta conta.</div>
+<div class="alert alert-secondary text-center py-4">
+  Nenhuma campanha encontrada.<br>
+  <a href="/wizard/{{ client_id }}/passo1" class="btn btn-warning text-dark fw-bold mt-2"><i class="bi bi-magic"></i> Criar Primeira Campanha</a>
+</div>
 {% endif %}
 {% endblock %}

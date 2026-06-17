@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Anúncios{% endblock %}
+{% block content %}
+<h4 class="mb-3"><i class="bi bi-card-image"></i> Anúncios</h4>
+<p class="text-light-emphasis small">{{ cliente.nome }} | Ad Set ID: {{ adset_id }}</p>
+
+{% if anuncios %}
+<div class="table-responsive">
+  <table class="table table-dark table-hover">
+    <thead><tr><th>Nome</th><th>Status</th><th>Criado em</th></tr></thead>
+    <tbody>
+      {% for a in anuncios %}
+      <tr>
+        <td>{{ a['name'] }}</td>
+        <td><span class="badge bg-{{ 'success' if a['status'] == 'ACTIVE' else 'secondary' }}">{{ a['status'] }}</span></td>
+        <td>{{ a.get('created_time', '---')[:10] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="alert alert-secondary">Nenhum anúncio neste conjunto.</div>
+{% endif %}
+<a href="/campanhas/{{ client_id }}" class="btn btn-outline-secondary mt-2">Voltar para Campanhas</a>
+{% endblock %}

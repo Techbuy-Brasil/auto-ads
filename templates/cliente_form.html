@@ -24,6 +24,12 @@
   </div>
 
   <div class="mb-3">
+    <label class="form-label">ID da Página do Facebook</label>
+    <input type="text" name="page_id" class="form-control bg-dark text-light" value="{{ cliente.page_id if cliente else '' }}" placeholder="123456789">
+    <div class="form-text text-light-emphasis">Necessário para criar anúncios com criativo</div>
+  </div>
+
+  <div class="mb-3">
     <label class="form-label">Access Token</label>
     <textarea name="access_token" class="form-control bg-dark text-light" rows="2" required>{{ cliente.access_token if cliente else '' }}</textarea>
     <div class="form-text text-light-emphasis">Token com permissão <code class="text-warning">ads_management</code></div>

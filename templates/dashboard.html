@@ -16,6 +16,7 @@
             <h5 class="card-title text-warning">{{ info.nome }}</h5>
             <p class="card-text small text-muted mb-2">ID: {{ cid }}</p>
             <p class="card-text small text-muted mb-2">Conta: {{ info.ad_account_id }}</p>
+            <p class="card-text small text-muted mb-2">Page: {{ info.page_id or '---' }}</p>
             <span class="badge bg-warning text-dark">Ads</span>
           </div>
           <div class="card-footer bg-transparent d-flex gap-2">
@@ -41,10 +42,13 @@
   <div class="card-body">
     <h5 class="text-warning"><i class="bi bi-info-circle"></i> Como usar</h5>
     <ol class="small text-light mb-0">
-      <li>Cadastre o cliente com o <strong>ID da conta de anúncio</strong> (ex: <code class="text-warning">act_123456789</code>) e o <strong>Access Token</strong> com permissão <code class="text-warning">ads_management</code></li>
-      <li>Acesse <strong>Campanhas</strong> para ver, criar, pausar ou ativar campanhas</li>
-      <li>Ao criar uma campanha, escolha o objetivo (Vendas, Leads, Tráfego, etc.) e defina o orçamento diário</li>
-      <li>A campanha é criada pausada — revise antes de ativar</li>
+      <li>Cadastre o cliente com <strong>ID da conta de anúncio</strong> (ex: <code class="text-warning">act_123456789</code>), <strong>Access Token</strong> (<code class="text-warning">ads_management</code>) e <strong>ID da Página</strong></li>
+      <li>Use <strong>"Criar Completo"</strong> no menu Campanhas — um wizard de 3 passos:
+        <span class="text-warning">Campanha</span> → <span class="text-info">Segmentação</span> → <span class="text-success">Criativo</span></li>
+      <li>No <strong>Passo 1</strong>: nome, objetivo (Vendas/Leads/Tráfego) e orçamento diário</li>
+      <li>No <strong>Passo 2</strong>: cidades, idade, gênero, interesses do público</li>
+      <li>No <strong>Passo 3</strong>: imagem, headline, texto, link e botão CTA</li>
+      <li>Revise e crie — tudo sai pausado para revisão antes de ativar</li>
     </ol>
   </div>
 </div>

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Revisar Campanha{% endblock %}
+{% block content %}
+<h4 class="mb-3"><i class="bi bi-check2-circle"></i> Revisar Campanha</h4>
+<p class="text-light-emphasis small">Cliente: <strong>{{ cliente.nome }}</strong></p>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card bg-black border-warning h-100">
+      <div class="card-header bg-warning text-dark fw-bold">Campanha</div>
+      <div class="card-body">
+        <p class="mb-1"><strong>Nome:</strong> {{ dados.campanha.nome }}</p>
+        <p class="mb-1"><strong>Objetivo:</strong> {{ dados.campanha.objetivo }}</p>
+        <p class="mb-0"><strong>Orçamento:</strong> R$ {{ dados.campanha.daily_budget }}/dia</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card bg-black border-info h-100">
+      <div class="card-header bg-info text-dark fw-bold">Segmentação</div>
+      <div class="card-body">
+        <p class="mb-1"><strong>Locais:</strong> {{ dados.segmentacao.locais or 'Brasil' }}</p>
+        <p class="mb-1"><strong>Idade:</strong> {{ dados.segmentacao.idade_min or '18' }} - {{ dados.segmentacao.idade_max or '65' }} anos</p>
+        <p class="mb-1"><strong>Gênero:</strong> {{ dados.segmentacao.genero or 'Todos' }}</p>
+        <p class="mb-0"><strong>Interesses:</strong> {{ dados.segmentacao.interesses or 'Nenhum' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card bg-black border-success h-100">
+      <div class="card-header bg-success text-white fw-bold">Criativo</div>
+      <div class="card-body">
+        <p class="mb-1"><strong>Headline:</strong> {{ dados.criativo.headline[:40] }}</p>
+        <p class="mb-1"><strong>CTA:</strong> {{ dados.criativo.cta }}</p>
+        <p class="mb-0"><strong>Link:</strong> {{ dados.criativo.link[:30] }}...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form method="POST" class="mt-4">
+  <button class="btn btn-success btn-lg"><i class="bi bi-rocket-takeoff"></i> Criar Campanha</button>
+  <a href="/wizard/{{ client_id }}/passo3" class="btn btn-outline-secondary">Voltar</a>
+  <a href="/wizard/{{ client_id }}/passo1" class="btn btn-outline-secondary">Recomeçar</a>
+</form>
+{% endblock %}

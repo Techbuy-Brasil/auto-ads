@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Passo 2 - Segmentação{% endblock %}
+{% block content %}
+<h4 class="mb-3"><i class="bi bi-2-circle"></i> Segmentação do Público</h4>
+
+<form method="POST">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Localização (cidades)</label>
+      <input type="text" name="locais" class="form-control bg-dark text-light" placeholder="Ex: São Paulo, Rio de Janeiro, Belo Horizonte">
+      <div class="form-text text-light-emphasis">Separe por vírgula. Deixe vazio para Brasil inteiro.</div>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Idade mínima</label>
+      <input type="number" name="idade_min" class="form-control bg-dark text-light" min="13" max="65" placeholder="18">
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Idade máxima</label>
+      <input type="number" name="idade_max" class="form-control bg-dark text-light" min="13" max="65" placeholder="65">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Gênero</label>
+      <select name="genero" class="form-select bg-dark text-light">
+        <option value="">Todos</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
+    </div>
+    <div class="col-md-8">
+      <label class="form-label">Interesses</label>
+      <input type="text" name="interesses" class="form-control bg-dark text-light" placeholder="Ex: marketing digital, empreendedorismo, viagens">
+      <div class="form-text text-light-emphasis">Separe por vírgula. Ex: corrida, academia, nutrição</div>
+    </div>
+    <div class="col-12 mt-4">
+      <button class="btn btn-warning text-dark fw-bold">Próximo: Criativo <i class="bi bi-arrow-right"></i></button>
+      <a href="/wizard/{{ client_id }}/passo1" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

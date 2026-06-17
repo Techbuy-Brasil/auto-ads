@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Passo 3 - Criativo{% endblock %}
+{% block content %}
+<h4 class="mb-3"><i class="bi bi-3-circle"></i> Criativo do Anúncio</h4>
+
+<form method="POST" enctype="multipart/form-data">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">ID da Página do Facebook</label>
+      <input type="text" name="page_id" class="form-control bg-dark text-light" required placeholder="123456789">
+      <div class="form-text text-light-emphasis">A página que vai publicar o anúncio</div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Link de destino</label>
+      <input type="url" name="link" class="form-control bg-dark text-light" required placeholder="https://seusite.com/lead">
+    </div>
+    <div class="col-md-8">
+      <label class="form-label">Título (Headline)</label>
+      <input type="text" name="headline" class="form-control bg-dark text-light" required placeholder="Ex: Aprenda Marketing Digital Hoje">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Botão CTA</label>
+      <select name="cta" class="form-select bg-dark text-light">
+        <option value="SAIBA_MAIS">Saiba Mais</option>
+        <option value="COMPRAR">Comprar</option>
+        <option value="CADASTRE_SE">Cadastre-se</option>
+        <option value="CONTATO">Entrar em Contato</option>
+        <option value="BAIXAR">Baixar</option>
+      </select>
+    </div>
+    <div class="col-md-12">
+      <label class="form-label">Descrição (Texto do anúncio)</label>
+      <textarea name="descricao" class="form-control bg-dark text-light" rows="3" required placeholder="Ex: Descubra como aumentar suas vendas com marketing digital..."></textarea>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Imagem do anúncio</label>
+      <input type="file" name="imagem" class="form-control bg-dark text-light" accept="image/*" required>
+      <div class="form-text text-light-emphasis">Formatos: JPG, PNG. Tamanho recomendado: 1080x1080</div>
+    </div>
+    <div class="col-12 mt-4">
+      <button class="btn btn-warning text-dark fw-bold">Próximo: Revisar <i class="bi bi-arrow-right"></i></button>
+      <a href="/wizard/{{ client_id }}/passo2" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

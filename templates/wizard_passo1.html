@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Passo 1 - Campanha{% endblock %}
+{% block content %}
+<h4 class="mb-3"><i class="bi bi-1-circle"></i> Dados da Campanha</h4>
+<p class="text-light-emphasis small">Cliente: <strong>{{ cliente.nome }}</strong></p>
+
+<form method="POST">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Nome da Campanha</label>
+      <input type="text" name="nome" class="form-control bg-dark text-light" required placeholder="Ex: Campanha Vendas - Maio 2026">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Objetivo</label>
+      <select name="objetivo" class="form-select bg-dark text-light" required>
+        <option value="VENDAS">Vendas (Conversões)</option>
+        <option value="LEADS">Leads (Geração de Leads)</option>
+        <option value="TRAFEGO">Tráfego (Visitas ao Site)</option>
+        <option value="RECONHECIMENTO">Reconhecimento (Awareness)</option>
+        <option value="ENGAGEMENT">Engajamento (Interações)</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Orçamento Diário (R$)</label>
+      <input type="number" name="daily_budget" class="form-control bg-dark text-light" step="0.01" min="5" required placeholder="50,00">
+    </div>
+    <div class="col-12 mt-4">
+      <button class="btn btn-warning text-dark fw-bold">Próximo: Segmentação <i class="bi bi-arrow-right"></i></button>
+      <a href="/campanhas/{{ client_id }}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

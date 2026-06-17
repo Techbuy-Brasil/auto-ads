@@ -20,13 +20,13 @@
   <div class="mb-3">
     <label class="form-label">ID da Conta de Anúncio</label>
     <input type="text" name="ad_account_id" class="form-control bg-dark text-light" required value="{{ cliente.ad_account_id if cliente else '' }}" placeholder="act_123456789">
-    <div class="form-text text-muted">Encontre no Gerenciador de Negócios ou Ads Manager</div>
+    <div class="form-text text-light-emphasis">Encontre no Gerenciador de Negócios ou Ads Manager</div>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Access Token</label>
     <textarea name="access_token" class="form-control bg-dark text-light" rows="2" required>{{ cliente.access_token if cliente else '' }}</textarea>
-    <div class="form-text text-muted">Token com permissão <code>ads_management</code></div>
+    <div class="form-text text-light-emphasis">Token com permissão <code class="text-warning">ads_management</code></div>
   </div>
 
   <button class="btn btn-warning text-dark fw-bold"><i class="bi bi-check-lg"></i> Salvar</button>
